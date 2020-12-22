@@ -1,0 +1,35 @@
+margersort(A,p,r){
+    if(p<r){
+	 mid = (p+r)/2
+	 margersort(A,p,mid)
+	 margersort(A,mid+1,r)
+	 marger(A,p,r,mid)
+	}
+}
+
+
+marger(A,p,r,mid){
+	helper []  = new int[A.length];
+	//将原数组拷贝到新数组中
+	copy(arr,p,helper,p,(r-p)+1);
+	left = p //左侧队伍的头部指针，指向待比较的元素
+	right = mid+1// 右侧队伍的头部指针，指向待比较的元素
+	current = p //原数组的指针， 指向代填入数据的位置
+while(left<=mid&&right<=r){
+
+if(helper[left]<=helper[right]{
+	A[current] = helper [left];
+	current++;
+	left++;
+}else{
+	A[current] = helper [right];
+	current++;
+	right++;
+}
+while(left<=mid){
+	A[current] = helper [left];
+	current++;
+	left++;
+}
+}
+}
