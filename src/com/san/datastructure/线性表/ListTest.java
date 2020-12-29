@@ -1,7 +1,5 @@
 package com.san.datastructure.线性表;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Auther: Gxyx
@@ -9,8 +7,9 @@ import java.util.List;
  */
 public class ListTest {
     public static void main(String[] args) throws Exception {
-        String[] initialList = {"a","b","c","d","e","f"};
-        ListInterface<String> list = new SequentialList<String>(initialList, initialList.length);
+        //String[] initialList = {"a","b","c","d","e","f"};
+        String[] initialList = {"A","B","#","D","#","#","C","#","#"};
+        ListInterface<String> list = new SequentialList(initialList, initialList.length);
         System.out.println("线性表长度："+list.length());
         System.out.println("线性表遍历结果：");
         list.printList();
