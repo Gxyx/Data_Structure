@@ -1,8 +1,9 @@
 package com.san.datastructure.数和二叉树.树;
 
-
 import com.san.datastructure.栈和队列.queen.LinkedQueue;
 import com.san.datastructure.栈和队列.queen.QueueInterface;
+import com.san.datastructure.栈和队列.stack.SequentialStack;
+import com.san.datastructure.栈和队列.stack.StackInterface;
 import com.san.datastructure.线性表.SequentialList;
 
 /**
@@ -30,6 +31,30 @@ public class BinaryTree<T> implements BinaryTreeInterface{
     }
 
     /**
+     * 前序非递归
+     */
+    @Override
+    public void iteratorPreOrder() throws Exception {
+        StackInterface<BinNode> stack = new SequentialStack();
+         BinNode node = root;
+        while(node!=null||!stack.isEmpty()){
+            while(node!=null){
+                System.out.println(node.getData()+" ");
+                //工作结点node出栈
+                stack.push(node);
+                //遍历node左孩子
+                node = node.getlChild();
+            }
+            if (!stack.isEmpty()){
+                //栈顶元素出栈
+                node = stack.pop();
+                //遍历node右孩子
+                node = node.getrChild();
+            }
+        }
+    }
+
+    /**
      * 重载方法
      * @param node
      */
@@ -51,6 +76,32 @@ public class BinaryTree<T> implements BinaryTreeInterface{
     public void inOrder() {
         inOrder(root);
     }
+
+    /**
+     * 中序非递归
+     */
+    @Override
+    public void iteratorinOrder() throws Exception {
+        StackInterface<BinNode> stack = new SequentialStack();
+        BinNode node = root;
+        while(node!=null||!stack.isEmpty()){
+            while(node!=null){
+                //工作结点node出栈
+                stack.push(node);
+                //遍历node左孩子
+                node = node.getlChild();
+            }
+            if (!stack.isEmpty()){
+                //栈顶元素出栈
+                node = stack.pop();
+
+                System.out.println(node.getData()+" ");
+                //遍历node右孩子
+                node = node.getrChild();
+            }
+        }
+    }
+
     /**
      * 重载方法
      * @param node
@@ -60,11 +111,11 @@ public class BinaryTree<T> implements BinaryTreeInterface{
             return;
         }else {
             //遍历node左子树
-            preOrder(node.getlChild());
+            inOrder(node.getlChild());
             //访问当前跟结点数据域
             System.out.println(node.getData()+" ");
             //遍历node的右子树
-            preOrder(node.getrChild());
+            inOrder(node.getrChild());
         }
     }
 
@@ -75,6 +126,35 @@ public class BinaryTree<T> implements BinaryTreeInterface{
     public void postOrder() {
         postOrder(root);
     }
+
+    /**
+     * 后序非递归
+     */
+    @Override
+    public void iteratorpostOrder() throws Exception {
+        StackInterface<FlagBiNode> stack = new SequentialStack<>();
+        BinNode node = root;
+        FlagBiNode flagBiNode;
+        while (node!=null||!stack.isEmpty()){
+            while(node!=null){
+                flagBiNode = new FlagBiNode(node,1);
+                stack.push(flagBiNode);
+                node = node.getlChild();
+            }
+            while(!stack.isEmpty()&&(stack.getTop()).getFlag()==2){
+                node = (stack.pop()).getNode();
+                System.out.println(node.getData()+" ");
+                node = null;
+            }
+            if (!stack.isEmpty()){
+                flagBiNode = stack.pop();
+                flagBiNode.setFlag(2);
+                stack.push(flagBiNode);
+                node = flagBiNode.getNode().getrChild();
+            }
+        }
+    }
+
     /**
      * 重载方法
      * @param node
@@ -84,9 +164,9 @@ public class BinaryTree<T> implements BinaryTreeInterface{
             return;
         }else {
             //遍历node左子树
-            preOrder(node.getlChild());
+            postOrder(node.getlChild());
             //遍历node的右子树
-            preOrder(node.getrChild());
+            postOrder(node.getrChild());
             //访问当前跟结点数据域
             System.out.println(node.getData()+" ");
         }
@@ -104,7 +184,7 @@ public class BinaryTree<T> implements BinaryTreeInterface{
             queue.enQueue(root);
             while (!queue.isEmpty()){
                 //出队
-                BinNode<T> tempNode = queue.deQueue();
+                BinNode tempNode = queue.deQueue();
                 //输出结点数据域
                 System.out.println(tempNode.getData()+" ");
                 if (tempNode.getlChild()!=null){

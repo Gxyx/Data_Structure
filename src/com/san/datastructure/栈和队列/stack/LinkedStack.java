@@ -1,5 +1,6 @@
 package com.san.datastructure.栈和队列.stack;
 
+import com.san.datastructure.数和二叉树.树.BinNode;
 import com.san.datastructure.链表.LinkedNode;
 
 /**

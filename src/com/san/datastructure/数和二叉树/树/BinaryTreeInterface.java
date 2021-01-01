@@ -11,14 +11,17 @@ public interface BinaryTreeInterface<T>{
      * 前序遍历
      */
     public void preOrder();
+    public void iteratorPreOrder() throws Exception;
     /**
      * 中序遍历
      */
     public void inOrder();
+    public void iteratorinOrder() throws Exception;
     /**
      * 后序遍历
      */
     public void postOrder();
+    public void iteratorpostOrder() throws Exception;
     /**
      * 层序遍历
      */

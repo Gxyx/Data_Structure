@@ -1,6 +1,6 @@
 package com.san.datastructure.栈和队列.stack;
 
-import jdk.management.resource.internal.inst.FileOutputStreamRMHooks;
+import com.san.datastructure.数和二叉树.树.BinNode;
 
 /**
  * @Auther: Gxyx

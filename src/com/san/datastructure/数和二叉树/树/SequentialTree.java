@@ -19,12 +19,27 @@ public class SequentialTree<T> implements BinaryTreeInterface {
     }
 
     @Override
+    public void iteratorPreOrder() throws Exception {
+
+    }
+
+    @Override
     public void inOrder() {
 
     }
 
     @Override
+    public void iteratorinOrder() throws Exception {
+
+    }
+
+    @Override
     public void postOrder() {
+
+    }
+
+    @Override
+    public void iteratorpostOrder() {
 
     }
 
