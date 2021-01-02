@@ -8,5 +8,5 @@ public interface GrophInterfact<T> {
     //深度优先遍历
     public void DFS(int startIndex);
     //广度优先遍历
-    public void BFS(int startIndex);
+    public void BFS(int startIndex) throws Exception;
 }

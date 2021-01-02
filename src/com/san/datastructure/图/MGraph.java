@@ -1,5 +1,8 @@
 package com.san.datastructure.图;
 
+import com.san.datastructure.栈和队列.queen.CircularQueue;
+import com.san.datastructure.栈和队列.queen.QueueInterface;
+
 import java.util.Scanner;
 
 /**
@@ -84,10 +87,32 @@ public class MGraph<T> implements GrophInterfact<T> {
     }
 
     /**
-     * 广度优先
+     * 广度优先遍历
      * @param startIndex
      */
     @Override
-    public void BFS(int startIndex) {
+    public void BFS(int startIndex) throws Exception {
+        //初始化访问数组
+        visited = new boolean[vertices_num];
+        QueueInterface<Integer> queue = new CircularQueue<Integer>();
+        //临时变量，储存出队顶点编号
+        int front_vertex;
+        //输出访问结点
+        System.out.println(vertices[startIndex].toString()+" ");
+        //标记访问结点
+        visited[startIndex]= true;
+        //访问结点入队
+        queue.enQueue(startIndex);
+        while (!queue.isEmpty()){
+            //对头顶点元素出队
+            front_vertex = queue.deQueue();
+            for (int i =0;i<vertices_num;i++){
+                if (adjMatrix[front_vertex][i] == 1&& !visited[i]){
+                    System.out.println(vertices[i].toString()+" ");
+                    visited[i] = true;
+                    queue.enQueue(i);
+                }
+            }
+        }
     }
 }
