@@ -115,4 +115,35 @@ public class MGraph<T> implements GrophInterfact<T> {
             }
         }
     }
+
+    /**
+     * 最小生成树 Prim算法
+     * @param startIndex
+     */
+    public void prim(int startIndex){
+        //候选最短边临接点数组
+        int adjvex[] = new int[vertices_num];
+        //侯选最短边的权值数组
+        int lowcost[] = new int[vertices_num];
+        for (int i=0;i<vertices_num;i++){
+            lowcost[i] = adjMatrix[startIndex][i];
+            adjvex[i] = startIndex;
+        }
+        for (int i=1;i<vertices_num;i++){
+            //获取最短边的邻接点
+            int minIndex = getMin(lowcost);
+            System.out.println("生成树第 "+i+" 条边："+vertices[adjvex[minIndex]]+"--"+vertices[minIndex]+" : "+lowcost[minIndex]);
+            lowcost[minIndex] = 0;
+            for (int j=0;j<vertices_num;j++){
+                if (adjMatrix[j][minIndex]!=-1&&(lowcost[j]==-1||adjMatrix[j][minIndex]<lowcost[j])){
+                    lowcost[j] = adjMatrix[j][minIndex];
+                    adjvex[j] = minIndex;
+                }
+            }
+        }
+    }
+
+    private int getMin(int[] lowcost) {
+        return 0;
+    }
 }
