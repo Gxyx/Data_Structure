@@ -15,6 +15,7 @@ public class 全排列Ⅱ_47 {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> track = new ArrayList<>();
         visited = new boolean[nums.length];
+        //在搜索之前就对候选数组排序，一旦发现某个分支搜索下去可能搜索到重复的元素就停止搜索
         Arrays.sort(nums);
         backtrack(nums, track, 0, res);
         return res;
@@ -44,6 +45,8 @@ public class 全排列Ⅱ_47 {
             if (visited[i]) {
                 continue;
             }
+            // 剪枝条件：i > 0 是为了保证 nums[i - 1] 有意义
+            // 写 !used[i - 1] 是因为 nums[i - 1] 在深度优先遍历的过程中刚刚被撤销选择
             if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
                 continue;  // 防止重复
             }
