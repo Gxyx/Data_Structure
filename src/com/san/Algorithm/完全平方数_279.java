@@ -72,6 +72,22 @@ public class 完全平方数_279 {
         return n;
     }
 
+
+    /** d
+     * 动态规划
+     * @param n
+     * @return
+     */
+    public static int numSquares3(int n) {
+        int[] dp = new int[n + 1]; // 默认初始化值都为0
+        for (int i = 1; i <= n; i++) {
+            dp[i] = i; // 最坏的情况就是每次+1
+            for (int j = 1; i - j * j >= 0; j++) {
+                dp[i] = Math.min(dp[i], dp[i - j * j] + 1); // 动态转移方程
+            }
+        }
+        return dp[n];
+    }
     /**
      * 生成小于 n 的平方数序列
      * @return 1,4,9,...
@@ -89,8 +105,9 @@ public class 完全平方数_279 {
     }
 
     public static void main(String[] args) {
-        int n = 0;
+        int n = 5;
         System.out.println(numSquares(n));
         System.out.println(numSquares2(n));
+        System.out.println(numSquares3(n));
     }
 }
