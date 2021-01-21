@@ -28,4 +28,23 @@ public class 相交链表_160 {
         //tempA要么是空，要么是两链表的交点
         return tempA;
     }
+
+    public ListNode getIntersectionNode1(ListNode headA, ListNode headB) {
+        ListNode tempA = headA;
+        ListNode tempB = headB;
+        while (tempA != tempB) {
+            if(tempA!=null){
+                tempA = tempA.next;
+            }else {
+                tempA = headB;
+            }
+
+            if (tempB!=null){
+                tempB = tempB.next;
+            }else {
+                tempB = headA;
+            }
+        }
+        return tempA;
+    }
 }
