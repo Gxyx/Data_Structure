@@ -6,14 +6,7 @@ package com.san.Algorithm;
  */
 public class 相交链表_160 {
 
-    public class ListNode {
-      int val;
-      ListNode next;
-      ListNode(int x) {
-          val = x;
-          next = null;
-      }
- }
+
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         //tempA和tempB我们可以认为是A,B两个指针
         ListNode tempA = headA;
