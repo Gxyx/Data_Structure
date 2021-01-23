@@ -40,4 +40,20 @@ public class 反转链表_206 {
             head.next = null;
             return newhead;
     }
+
+    /**
+     * 头插法
+     * @param head
+     * @return
+     */
+    public ListNode reverseList2(ListNode head) {
+        ListNode newHead = new ListNode(-1);
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = newHead.next;
+            newHead.next = head;
+            head = next;
+        }
+        return newHead.next;
+    }
 }
