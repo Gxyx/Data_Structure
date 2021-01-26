@@ -6,17 +6,30 @@ package com.san.Algorithm;
  */
 public class 路径总和Ⅲ_437 {
 
+    /**
+     * 以当前节点作为头结点的路径数量
+     * 当前节点的左子树中满足条件的路径数量
+     * 当前节点的右子树中满足条件的路径数量
+     * @param root
+     * @param sum
+     * @return
+     */
     public int pathSum(TreeNode root, int sum) {
-        if (root == null) return 0;
-        int ret = pathSumStartWithRoot(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
-        return ret;
+        if (root == null){
+            return 0;
+        }
+        int result = countPath(root,sum);
+        int left = pathSum(root.left,sum);
+        int right = pathSum(root.right,sum);
+        return result+left+right;
+    }
+    public int countPath(TreeNode root,int sum){
+        if(root == null){
+            return 0;
+        }
+        sum = sum -root.val;
+        int result = sum == 0 ? 1:0;
+        return result + countPath(root.left,sum) + countPath(root.right,sum);
     }
 
-    private int pathSumStartWithRoot(TreeNode root, int sum) {
-        if (root == null) return 0;
-        int ret = 0;
-        if (root.val == sum) ret++;
-        ret += pathSumStartWithRoot(root.left, sum - root.val) + pathSumStartWithRoot(root.right, sum - root.val);
-        return ret;
-    }
 }
