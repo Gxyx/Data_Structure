@@ -1,4 +1,4 @@
-package com.san.datastructure.数和二叉树.树;
+package com.san.datastructure.树和二叉树.树;
 
 import com.san.datastructure.线性表.SequentialList;
 

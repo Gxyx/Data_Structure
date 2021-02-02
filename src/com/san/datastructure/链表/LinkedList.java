@@ -11,7 +11,7 @@ public class LinkedList<T> implements ListInterface<T> {
     private LinkedNode<T> first;
 
 
-    private LinkedList(){
+    public LinkedList(){
         first = new LinkedNode<T>();
     }
 

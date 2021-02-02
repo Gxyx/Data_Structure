@@ -1,7 +1,5 @@
 package com.san.datastructure.栈和队列.queen;
 
-import com.san.datastructure.数和二叉树.二叉排序树.BiNode;
-
 /**
  * @Auther: Gxyx
  * @Date: 2020/12/21/13:37
