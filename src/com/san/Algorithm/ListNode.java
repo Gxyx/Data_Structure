@@ -1,10 +1,12 @@
 package com.san.Algorithm;
 
+import com.san.有环链表;
+
 /**
  * @Auther: Gxyx
  * @Date: 2021/01/22/0:34
  */
-public class ListNode {
+ public class ListNode {
     int val;
     ListNode next;
     ListNode() {}
@@ -15,3 +17,5 @@ public class ListNode {
         this.val = val; this.next = next;
     }
 }
+
+

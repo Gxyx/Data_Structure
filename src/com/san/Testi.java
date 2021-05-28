@@ -23,5 +23,8 @@ public class Testi {
          */
         System.out.println("a："+a);
         System.out.println("++i："+b);
+        System.out.println(2^3*2-1+(1/3)+2^(1234+5));
+
+        System.out.println(7%10);
     }
 }
